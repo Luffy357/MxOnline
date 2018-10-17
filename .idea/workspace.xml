@@ -2,30 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b067015d-31f6-45fd-adb4-db426260438c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/courses/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/courses/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/courses/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/courses/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/courses/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/courses/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/operation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/operation/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/operation/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/operation/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/operation/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/operation/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/organization/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/organization/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/organization/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/organization/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/organization/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/organization/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -133,7 +109,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="683" />
@@ -152,6 +128,17 @@
             <path>
               <item name="MxOnline" type="b2602c69:ProjectViewProjectNode" />
               <item name="MxOnline" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MxOnline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MxOnline" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MxOnline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MxOnline" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="courses" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -219,21 +206,28 @@
       <option name="presentableId" value="Default" />
       <updated>1539694686980</updated>
     </task>
+    <task id="LOCAL-00001" summary="connect database">
+      <created>1539779198060</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1539779198060</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32838285" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32838285" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32838285" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -257,7 +251,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="connect database" />
+    <option name="LAST_COMMIT_MESSAGE" value="connect database" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/MxOnline/settings.py">
