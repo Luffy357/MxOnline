@@ -21,7 +21,6 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -33,6 +32,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+AUTHNTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+)
 
 # Application definition
 
@@ -139,6 +142,6 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
-)
+]
