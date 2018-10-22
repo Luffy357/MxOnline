@@ -10,16 +10,20 @@ from django.db import models
 class CityDict(models.Model):
     name = models.CharField(max_length=20, verbose_name=u'城市')
     desc = models.CharField(max_length=200, verbose_name=u'描述')
-    add_time = models.DateField(default=datetime.now)
+    add_time = models.DateField(default=datetime.now, verbose_name=u'时间')
 
     class Meta:
         verbose_name = u'城市'
         verbose_name_plural = verbose_name
 
+    def __unicode__(self):
+        return self.name
+
 
 class CourseOrg(models.Model):
     name = models.CharField(max_length=50, verbose_name=u'机构名称')
     desc = models.TextField(verbose_name=u'机构描述')
+    catgory = models.CharField(verbose_name=u'机构类别', max_length=20, choices=(('pxjg', '培训机构'), ('gr', '个人'), ('gx', '高校')))
     click_nums = models.IntegerField(default=0, verbose_name=u"点击数")
     fav_nums = models.IntegerField(default=0, verbose_name=u'收藏数')
     image = models.ImageField(upload_to='org/%Y/%m', verbose_name=u'封面图')

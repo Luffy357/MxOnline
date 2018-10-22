@@ -17,21 +17,29 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 import xadmin
+from django.views.static import serve
 
 from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetPwdView, ModifyPwdView
+from organization.views import OrgListView
+from MxOnline.settings import MEDIA_ROOT
+
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url(r'^login/$', LoginView.as_view(), name='login'),
-    url(r'^register/$', RegisterView.as_view(), name='register'),
+    url(r'^login/&', LoginView.as_view(), name='login'),
+    url(r'^register/&', RegisterView.as_view(), name='register'),
 
     # 激活账户
-    url(r'^captcha/$', include('captcha.urls')),
-    url(r'^active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name='active'),
+    url(r'^captcha/&', include('captcha.urls')),
+    url(r'^active/(?P<active_code>.*)/&', ActiveUserView.as_view(), name='active'),
 
     # 重置密码
-    url(r'^forget/$', ForgetPwdView.as_view(), name='forget'),
+    url(r'^forget/&', ForgetPwdView.as_view(), name='forget'),
     url(r'^reset/(?P<active_code>.*)/$', ResetPwdView.as_view(), name='reset_pwd'),
-    url(r'^modify_pwd/$', ModifyPwdView.as_view(), name='modify_pwd'),
+    url(r'^modify_pwd/&', ModifyPwdView.as_view(), name='modify_pwd'),
+
+    url(r'^org_list/&', OrgListView.as_view(), name='org_list'),
+    # 配置上传文件的访问处理函数
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 ]
