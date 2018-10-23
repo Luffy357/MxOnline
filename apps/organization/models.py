@@ -28,6 +28,8 @@ class CourseOrg(models.Model):
     fav_nums = models.IntegerField(default=0, verbose_name=u'收藏数')
     image = models.ImageField(upload_to='org/%Y/%m', verbose_name=u'封面图')
     address = models.CharField(max_length=100, verbose_name=u'机构地址')
+    students = models.IntegerField(default=0, verbose_name=u'学习人数')
+    course_nums = models.IntegerField(default=0, verbose_name=u'课程数')
     city = models.ForeignKey(CityDict, verbose_name=u'所在城市')
 
     class Meta:

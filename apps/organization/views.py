@@ -10,7 +10,27 @@ from organization.models import CourseOrg, CityDict
 class OrgListView(View):
     def get(self, request):
         all_org = CourseOrg.objects.all()
+        hot_orgs = all_org.order_by('-click_nums')[:3]
+
         all_city = CityDict.objects.all()
+
+        # 对分页前的结果进行城市刷选
+        city_id = request.GET.get('city', "")
+        if city_id:
+            all_org = all_org.filter(city_id=int(city_id))
+
+        # 类别刷选
+        category = request.GET.get('ct', "")
+        if category:
+            all_org = all_org.filter(catgory=category)
+
+        # 排序
+        sort = request.GET.get('sort', "")
+        if sort:
+            if sort == 'students':
+                all_org = all_org.order_by('students')
+            elif sort == 'courses':
+                all_org = all_org.order_by('course_nums')
 
         org_nums = all_org.count()
 
@@ -28,4 +48,8 @@ class OrgListView(View):
             'all_org': orgs,
             'all_city': all_city,
             'org_nums': org_nums,
+            'city_id': city_id,
+            'hot_orgs': hot_orgs,
+            'category': category,
+            'sort': sort,
         })
