@@ -18,6 +18,4 @@ urlpatterns = [
     # 机构收藏
     url(r'^add_fav/$', AddFavView.as_view(), name="add_fav"),
 
-
-
 ]
