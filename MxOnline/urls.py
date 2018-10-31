@@ -47,4 +47,9 @@ urlpatterns = [
     # 课程的url
     url(r'^course/', include('courses.urls', namespace="course")),
 
+    # 用户url
+    url(r'^users/', include('users.urls', namespace="users")),
+
+
+
 ]
