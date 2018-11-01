@@ -20,7 +20,6 @@ import xadmin
 from django.views.static import serve
 
 from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetPwdView, ModifyPwdView
-from organization.views import OrgListView
 from MxOnline.settings import MEDIA_ROOT
 
 
