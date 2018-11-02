@@ -7,15 +7,15 @@ from django.views.generic import View
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse
+from pure_pagination import Paginator, PageNotAnInteger
 
-from operation.models import UserCourse, UserFavorite
+from operation.models import UserCourse, UserFavorite, UserMessage
 from organization.models import Teacher, CourseOrg
 from courses.models import Course
 from .models import UserProfile, EmailVerifyRecord
 from .forms import LoginForm, RegisterForm, ForgetPwdForm, ModifyPwdForm, UploadImageForm, UserInfoForm
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
-
 
 
 class CustomBackend(ModelBackend):
@@ -95,6 +95,12 @@ class RegisterView(View):
             user_profile.email = email
             user_profile.password = make_password(pass_word)
             user_profile.save()
+
+            # 发送注册消息
+            user_message = UserMessage()
+            user_message.user = user_profile.id
+            user_message.message = u'欢迎注册'
+            user_message.save()
 
             # 发送注册激活链接到邮箱
             send_register_email(email, 'register')
@@ -277,4 +283,19 @@ class MyFavCourseView(LoginRequiredMixin, View):
         })
 
 
+class MyMessageView(LoginRequiredMixin, View):
+    def get(self, request):
+        all_messages = UserMessage.objects.filter(user=request.user.id)
+
+        try:
+            page = request.GET.get('page', 1)
+        except PageNotAnInteger:
+            page = 1
+
+        p = Paginator(all_messages, 3, request=request)
+
+        messages = p.page(page)
+        return render(request, 'usercenter-message.html', {
+            'messages': messages,
+        })
 

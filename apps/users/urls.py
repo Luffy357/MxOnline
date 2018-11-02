@@ -29,4 +29,6 @@ urlpatterns = [
     # 我的收藏的课程
     url(r'^fav/course/$', MyFavCourseView.as_view(), name='fav_course'),
 
+    # 我的消息
+    url(r'^mymessage/$', MyFavCourseView.as_view(), name='mymessage'),
     ]
