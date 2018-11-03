@@ -1,12 +1,12 @@
 # -*- coding:utf8 -*-
 import json
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.backends import ModelBackend
 from django.views.generic import View
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from pure_pagination import Paginator, PageNotAnInteger
 
 from operation.models import UserCourse, UserFavorite, UserMessage
@@ -47,6 +47,16 @@ class ActiveUserView(View):
         else:
             return render(request, 'active_fail.html')
         return render(request, 'login.html')
+
+
+class LogoutView(View):
+    """
+    登出
+    """
+    def get(self, request):
+        logout(request)
+        from django.core.urlresolvers import reverse
+        return HttpResponseRedirect(reverse('index'))
 
 
 class LoginView(View):
