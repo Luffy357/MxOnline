@@ -21,7 +21,7 @@ from django.views.static import serve
 
 from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetPwdView, ModifyPwdView
 from users.views import LogoutView, IndexView
-from MxOnline.settings import MEDIA_ROOT
+from MxOnline.settings import MEDIA_ROOT, STATIC_ROOT
 
 
 urlpatterns = [
@@ -45,12 +45,17 @@ urlpatterns = [
     # 配置上传文件的访问处理函数
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
+
     # 课程的url
     url(r'^course/', include('courses.urls', namespace="course")),
 
     # 用户url
     url(r'^users/', include('users.urls', namespace="users")),
 
-
-
 ]
+
+# 配置404页面
+handler404 = 'users.views.page_not_found'
+# 配置500页面
+handler500 = 'users.views.page_error'

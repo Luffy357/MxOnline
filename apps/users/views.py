@@ -8,6 +8,8 @@ from django.db.models import Q
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse, HttpResponseRedirect
 from pure_pagination import Paginator, PageNotAnInteger
+from django.core.urlresolvers import reverse
+from django.shortcuts import render_to_response
 
 from operation.models import UserCourse, UserFavorite, UserMessage
 from organization.models import Teacher, CourseOrg
@@ -55,7 +57,6 @@ class LogoutView(View):
     """
     def get(self, request):
         logout(request)
-        from django.core.urlresolvers import reverse
         return HttpResponseRedirect(reverse('index'))
 
 
@@ -330,3 +331,16 @@ class IndexView(View):
             'banner_course': banner_course,
             'course_org': course_org
         })
+
+
+# 404页面处理函数
+def page_not_found(request):
+    response = render_to_response('404.html')
+    response.status_code = 404
+    return response
+
+# 500页面处理函数
+def page_error(request):
+    response = render_to_response('500.html')
+    response.status_code = 500
+    return response
