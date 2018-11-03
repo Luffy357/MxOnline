@@ -12,7 +12,7 @@ from pure_pagination import Paginator, PageNotAnInteger
 from operation.models import UserCourse, UserFavorite, UserMessage
 from organization.models import Teacher, CourseOrg
 from courses.models import Course
-from .models import UserProfile, EmailVerifyRecord
+from .models import UserProfile, EmailVerifyRecord, Banner
 from .forms import LoginForm, RegisterForm, ForgetPwdForm, ModifyPwdForm, UploadImageForm, UserInfoForm
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
@@ -75,7 +75,7 @@ class LoginView(View):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return render(request, 'index.html')
+                    return HttpResponseRedirect(reverse('index'))
                 else:
                     return render(request, 'login.html', {"msg": "用户未激活"})
             else:
@@ -294,8 +294,16 @@ class MyFavCourseView(LoginRequiredMixin, View):
 
 
 class MyMessageView(LoginRequiredMixin, View):
+    """
+    我的消息
+    """
     def get(self, request):
         all_messages = UserMessage.objects.filter(user=request.user.id)
+
+        all_unread_messages = UserMessage.objects.filter(user=request.user.id, has_read=False)
+        for unread_message in all_unread_messages:
+            unread_message.has_read = True
+            unread_message.save()
 
         try:
             page = request.GET.get('page', 1)
@@ -309,3 +317,16 @@ class MyMessageView(LoginRequiredMixin, View):
             'messages': messages,
         })
 
+
+class IndexView(View):
+    def get(self, request):
+        all_banners = Banner.objects.all().order_by('index')
+        courses = Course.objects.filter(is_banner=False)[:5]
+        banner_course = Course.objects.filter(is_banner=True)[:3]
+        course_org = CourseOrg.objects.all()[:15]
+        return render(request, 'index.html', {
+            'all_banners': all_banners,
+            'courses': courses,
+            'banner_course': banner_course,
+            'course_org': course_org
+        })
