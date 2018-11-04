@@ -10,6 +10,7 @@ class CourseAdmin(object):
     list_display = ['name', 'desc', 'degree', 'learn_times', 'students', 'fav_nums', 'image', 'click_nums', 'add_time']
     search_fields = ['name', 'desc', 'degree', 'learn_times', 'students', 'fav_nums', 'image', 'click_nums']
     list_filter = ['name', 'desc', 'degree', 'learn_times', 'students', 'fav_nums', 'image', 'click_nums', 'add_time']
+    model_icon = 'fa fa-superpowers'
 
 
 class LessonAdmin(object):

@@ -11,6 +11,7 @@ class UserAskAdmin(object):
     list_display = ['name', 'mobile', 'course_name', 'add_time']
     search_fields = ['name', 'mobile', 'course_name']
     list_filter = ['name', 'mobile', 'course_name', 'add_time']
+    model_icon = 'fa fa-hand-paper-o'
 
 
 class CourseCommentsAdmin(object):
@@ -35,6 +36,7 @@ class UserCourseAdmin(object):
     list_display = ['user', 'course', 'add_time']
     search_fields = ['user', 'course']
     list_filter = ['user', 'course', 'add_time']
+    model_icon = 'fa fa-superpowers'
 
 
 xadmin.site.register(UserAsk, UserAskAdmin)
