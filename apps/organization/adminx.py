@@ -18,6 +18,7 @@ class CourseOrgAdmin(object):
     search_fields = ['name', 'desc', 'click_nums', 'fav_nums', 'image', 'address', 'city']
     list_filter = ['name', 'desc', 'click_nums', 'fav_nums', 'image', 'address', 'city']
     model_icon = 'fa fa-free-code-camp'
+    relfield_style = 'fk-ajax'
 
 
 class TeacherAdmin(object):

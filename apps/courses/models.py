@@ -1,6 +1,7 @@
 # -*- coding:utf8 -*-
 from __future__ import unicode_literals
 from datetime import datetime
+from DjangoUeditor.models import UEditorField
 
 from django.db import models
 from organization.models import CourseOrg, Teacher
@@ -11,6 +12,7 @@ class Course(models.Model):
     course_org = models.ForeignKey(CourseOrg, verbose_name=u'课程机构', null=True, blank=True)
     name = models.CharField(max_length=100, verbose_name=u'课程名称')
     desc = models.TextField(max_length=500, verbose_name=u'课程描述')
+    detail = UEditorField(verbose_name=u'课程详情', width=600, height=300, imagePath="course/ueditor", filePath="course/ueditor", default='')
     degree = models.CharField(choices=(('cj', u'初级'), ('zj', u'中级'), ('gj', u'高级')), max_length=10)
     teacher = models.ForeignKey(Teacher, verbose_name=u'授课讲师', null=True, blank=True)
     learn_times = models.IntegerField(default=0, verbose_name=u'学习时长')
@@ -43,6 +45,13 @@ class Course(models.Model):
     # 获取课程所有章节
     def get_course_lesson(self):
         return self.lesson_set.all()
+
+
+class BannerCourse(Course):
+    class Meta:
+        verbose_name = '轮播课程'
+        verbose_name_plural = verbose_name
+        proxy = True
 
 
 class Lesson(models.Model):

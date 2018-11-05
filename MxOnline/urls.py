@@ -53,6 +53,8 @@ urlpatterns = [
     # 用户url
     url(r'^users/', include('users.urls', namespace="users")),
 
+    url(r'^ueditor/',include('DjangoUeditor.urls' ))
+
 ]
 
 # 配置404页面
